@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Container, Flex } from '../../GlobalStyled';
 import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher';
 import WordCart from '../WordCart/WordCart';
@@ -23,7 +24,7 @@ const Header = () => {
     <HeaderStyled>
       <Container>
         <Logo>
-          <a href="#">Readerly</a>
+          <Link to="/">Readerly</Link>
         </Logo>
 
         <Nav>
@@ -37,7 +38,7 @@ const Header = () => {
             <MenuStyled isMenuOpen={isMenuOpen}>
               {menuContent.map((link) => (
                 <li key={link.id}>
-                  <a href={link.url}>{link.name}</a>
+                  <Link to={link.url}>{link.name}</Link>
                 </li>
               ))}
             </MenuStyled>
