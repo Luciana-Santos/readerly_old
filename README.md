@@ -1,2 +1,5 @@
 # readerly
-App com textos em inglês para estudo.
+
+App para treinar a leitura em Inglês.
+
+
