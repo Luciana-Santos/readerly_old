@@ -1,7 +1,8 @@
 import { MdBookmarkAdd } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const WordCartStyled = styled.div`
+export const WordCartStyled = styled(Link)`
   display: flex;
   cursor: pointer;
   gap: 4px;

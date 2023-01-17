@@ -2,7 +2,7 @@ import { WordCartIcon, WordCartStyled } from './WordCart.styled';
 
 const WordCart = () => {
   return (
-    <WordCartStyled>
+    <WordCartStyled to="/quiz">
       <span>3</span>
       <WordCartIcon />
     </WordCartStyled>
