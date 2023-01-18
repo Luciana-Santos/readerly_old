@@ -1,17 +1,17 @@
 export const menuContent = [
   {
     id: 1,
-    name: 'Categories',
+    name: 'Home',
     url: '/',
   },
   {
     id: 2,
-    name: 'Statistics',
-    url: '/statistics',
+    name: 'Categories',
+    url: '/categories',
   },
   {
     id: 3,
-    name: 'About',
-    url: '/about',
+    name: 'Statistics',
+    url: '/statistics',
   },
 ];

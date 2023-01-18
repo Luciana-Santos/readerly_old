@@ -72,7 +72,7 @@ export const MenuStyled = styled.ul<MenuStyledProps>`
       padding-inline: 20px;
       padding-block: 8px;
       font-size: 18px;
-      color: ${theme.colors.textColor};
+      color: #cecccf;
 
       &:hover {
         background: ${theme.colors.accent};
