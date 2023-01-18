@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import { GlobalStyles } from './GlobalStyled';
 import Categories from './pages/Categories/Categories';
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="/statistics" element={<Statistics />} />
         <Route path="/quiz" element={<Quiz />} />
       </Routes>
+      <Footer />
     </ThemeProvider>
   );
 };
