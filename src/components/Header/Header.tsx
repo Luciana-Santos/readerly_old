@@ -38,7 +38,9 @@ const Header = () => {
             <MenuStyled isMenuOpen={isMenuOpen}>
               {menuContent.map((link) => (
                 <li key={link.id}>
-                  <Link to={link.url}>{link.name}</Link>
+                  <Link to={link.url} onClick={handleMenuMobile}>
+                    {link.name}
+                  </Link>
                 </li>
               ))}
             </MenuStyled>
