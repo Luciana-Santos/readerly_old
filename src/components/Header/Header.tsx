@@ -5,6 +5,7 @@ import ThemeSwitcher from '../ThemeSwitcher/ThemeSwitcher';
 import WordCart from '../WordCart/WordCart';
 import { menuContent } from './content';
 import {
+  BackdropMenu,
   HeaderStyled,
   Logo,
   MenuCloseIcon,
@@ -35,6 +36,7 @@ const Header = () => {
               <MenuMobileIcon onClick={handleMenuMobile} />
             )}
 
+            {isMenuOpen ? <BackdropMenu onClick={handleMenuMobile} /> : null}
             <MenuStyled isMenuOpen={isMenuOpen}>
               {menuContent.map((link) => (
                 <li key={link.id}>
