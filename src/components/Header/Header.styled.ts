@@ -51,15 +51,29 @@ export const Nav = styled.nav`
   align-items: center;
 `;
 
+export const BackdropMenu = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 67px;
+  bottom: 0;
+  right: 0;
+
+  @media (min-width: 46.75em) {
+    display: none;
+  }
+`;
+
 export const MenuStyled = styled.ul<MenuStyledProps>`
   ${({ theme, isMenuOpen }) => css`
     display: flex;
     column-gap: 30px;
-    height: calc(100vh - 67px);
+    height: calc(100vh - 103px);
     width: 60vw;
     flex-direction: column;
     position: absolute;
-    bottom: 0;
+    bottom: 36px;
     left: 0;
     padding-block: 30px 0;
     background-color: ${theme.colors.textBackground};
@@ -72,7 +86,7 @@ export const MenuStyled = styled.ul<MenuStyledProps>`
       padding-inline: 20px;
       padding-block: 8px;
       font-size: 18px;
-      color: #cecccf;
+      color: ${theme.colors.textColor};
 
       &:hover {
         background: ${theme.colors.accent};
@@ -85,6 +99,7 @@ export const MenuStyled = styled.ul<MenuStyledProps>`
 
       @media (min-width: 46.75em) {
         padding-inline: 0;
+        color: #cecccf;
       }
     }
 
@@ -96,6 +111,7 @@ export const MenuStyled = styled.ul<MenuStyledProps>`
       width: max-content;
       padding-top: 0;
       margin-left: 0;
+      bottom: 0;
     }
   `}
 `;
