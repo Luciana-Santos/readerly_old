@@ -7,6 +7,7 @@ import { GlobalStyles } from './GlobalStyled';
 import Categories from './pages/Categories/Categories';
 import Home from './pages/Home/Home';
 import Quiz from './pages/Quiz/Quiz';
+import ReadingPage from './pages/ReadingPage/ReadingPage';
 import Statistics from './pages/Statistics/Statistics';
 import { ThemeContext } from './store/ThemeContext';
 
@@ -19,7 +20,10 @@ const App = () => {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/categories" element={<Categories />} />
+        <Route path="/categories">
+          <Route index element={<Categories />} />
+          <Route path="/categories/text/:id" element={<ReadingPage />} />
+        </Route>
         <Route path="/statistics" element={<Statistics />} />
         <Route path="/quiz" element={<Quiz />} />
       </Routes>

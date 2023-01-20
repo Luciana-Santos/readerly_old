@@ -1,39 +1,33 @@
-import {
-  AsideCategories,
-  BulletIcon,
-  CategoriesStyled,
-  MainSection,
-} from './Categories.styled';
-import { content } from './content';
+import { useEffect, useState } from 'react';
+import CategoriesList from '../../components/Categories/CategoriesList';
+import MainSection from '../../components/Categories/MainSection';
+import { CategoriesStyled } from './Categories.styled';
 
 const Categories = () => {
+  const [data, setData] = useState();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          'https://readerly-e2ca1-default-rtdb.firebaseio.com/data.json'
+        );
+        const dataDb = await response.json();
+
+        setData(dataDb);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <CategoriesStyled>
-      <AsideCategories>
-        <ul>
-          <li>
-            <a href="#">All</a>
-          </li>
-          {content.map((categorie) => (
-            <li key={categorie.id}>
-              <a href="#">{categorie.categorie}</a>
-            </li>
-          ))}
-        </ul>
-      </AsideCategories>
+      <CategoriesList data={data} />
 
-      <MainSection>
-        <ul>
-          {content.map((categorie) => (
-            <>
-              <li key={categorie.id}>
-                <BulletIcon />
-                <a href="#">{categorie.title}</a>
-              </li>
-            </>
-          ))}
-        </ul>
-      </MainSection>
+      <MainSection data={data} />
     </CategoriesStyled>
   );
 };
