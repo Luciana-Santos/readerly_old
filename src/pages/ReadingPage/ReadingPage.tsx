@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router';
 import { Container } from '../../GlobalStyled';
 import {
+  FinishButton,
+  FooterButtons,
   GoBackButton,
   ReadingPageStyled,
   ReadingPageTitle,
@@ -30,14 +32,39 @@ const ReadingPage = () => {
     fetchData();
   }, []);
 
+  const textArray = (e: any) => {
+    const textArray = textContent?.text.split(' ');
+    const shuffledArr = textArray.sort(() => 0.5 - Math.random());
+    const n = 5;
+    const result = shuffledArr.slice(0, n);
+
+    handleDictionary(result, textArray);
+  };
+
+  const handleDictionary = (words: any, textArray: any) => {
+    textArray.forEach((word) =>
+      words.filter((w) =>
+        word === w
+          ? console.log('textArray-word é igual a word-sliced')
+          : console.log('textArray-word não é igual a word-sliced')
+      )
+    );
+  };
+
   return (
     <Container as="main">
       <ReadingPageStyled>
         <ReadingPageTitle>{textContent?.title}</ReadingPageTitle>
 
-        <TextContent>{textContent?.text}</TextContent>
+        <TextContent onClick={(e) => textArray(e)}>
+          {textContent?.text}
+        </TextContent>
       </ReadingPageStyled>
-      <GoBackButton href="/categories">Back</GoBackButton>
+
+      <FooterButtons>
+        <GoBackButton to="/categories">Back</GoBackButton>
+        <FinishButton>Done</FinishButton>
+      </FooterButtons>
     </Container>
   );
 };
