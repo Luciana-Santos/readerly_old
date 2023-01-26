@@ -9,6 +9,7 @@ import Home from './pages/Home/Home';
 import Quiz from './pages/Quiz/Quiz';
 import ReadingPage from './pages/ReadingPage/ReadingPage';
 import Statistics from './pages/Statistics/Statistics';
+
 import { ThemeContext } from './store/ThemeContext';
 
 const App = () => {

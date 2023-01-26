@@ -1,6 +1,11 @@
+import { Readerly } from '../../types/types';
 import { CategoriesListStyled } from './CategoriesList.styled';
 
-const CategoriesList = ({ data }: any) => {
+interface CategoriesListProps {
+  data: Readerly[];
+}
+
+const CategoriesList = ({ data }: CategoriesListProps) => {
   const allTags = ['all', ...new Set(data?.map((item) => item.tag).flat(1))];
 
   return (
@@ -8,7 +13,7 @@ const CategoriesList = ({ data }: any) => {
       <ul>
         {data &&
           allTags.map((tag, i) => (
-            <li key={data[i].id}>
+            <li key={i}>
               <span>{tag}</span>
             </li>
           ))}

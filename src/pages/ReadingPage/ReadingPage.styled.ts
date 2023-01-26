@@ -17,8 +17,19 @@ export const ReadingPageTitle = styled.h2`
   ${({ theme }) => css`
     color: ${theme.colors.accent};
     text-align: center;
-    font-size: clamp(22px, 5vw, 28px);
+    font-size: clamp(24px, 5vw, 28px);
     margin-bottom: 60px;
+  `}
+`;
+
+export const Subtitle = styled.h3`
+  ${({ theme }) => css`
+    color: ${theme.colors.textColor};
+    font-size: clamp(22px, 5vw, 28px);
+    margin-top: 90px;
+    max-width: 760px;
+    margin-inline: auto;
+    margin-bottom: 34px;
   `}
 `;
 
@@ -62,5 +73,6 @@ export const FinishButton = styled.button`
     border: none;
     cursor: pointer;
     color: ${theme.colors.white};
+    border-radius: 2px;
   `}
 `;

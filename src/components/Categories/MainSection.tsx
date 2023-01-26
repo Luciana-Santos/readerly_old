@@ -1,7 +1,12 @@
 import { Link } from 'react-router-dom';
+import { Readerly } from '../../types/types';
 import { BulletIcon, MainSectionStyled } from './MainSection.styled';
 
-const MainSection = ({ data }: any) => {
+interface MainSectionProps {
+  data: Readerly[];
+}
+
+const MainSection = ({ data }: MainSectionProps) => {
   return (
     <MainSectionStyled>
       <ul>

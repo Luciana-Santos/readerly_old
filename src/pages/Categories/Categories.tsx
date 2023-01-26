@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import CategoriesList from '../../components/Categories/CategoriesList';
 import MainSection from '../../components/Categories/MainSection';
+import { Readerly } from '../../types/types';
 import { CategoriesStyled } from './Categories.styled';
 
 const Categories = () => {
-  const [data, setData] = useState();
+  const [data, setData] = useState<Readerly[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
