@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import { getReaderly } from '../../api/readerly-service';
 import Glossary from '../../components/Glossary/Glossary';
 import { Container } from '../../GlobalStyled';
+import useFetch from '../../hooks/useFetch';
 import { Readerly, GlossaryProps } from '../../types/types';
 
 import {
@@ -17,23 +18,11 @@ import {
 
 const ReadingPage = () => {
   const { id } = useParams<{ id: string }>();
-  const [data, setData] = useState<Readerly[]>();
+  const { data, loading } = useFetch();
+
   const [glossary, setGlossary] = useState<string[]>([]);
 
   const textContent = data?.find((text: Readerly) => text.id === Number(id));
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await getReaderly();
-        setData(response);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchData();
-  }, []);
 
   useEffect(() => {
     const textArray = textContent?.text;

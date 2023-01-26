@@ -10,8 +10,6 @@ import {
 } from './Glossary.styled';
 
 const Glossary = ({ words }: GlossaryProps) => {
-  console.log(words);
-
   return (
     <GlossaryWords>
       {words?.map((word) => {

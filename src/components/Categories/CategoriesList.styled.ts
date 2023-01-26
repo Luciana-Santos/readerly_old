@@ -10,7 +10,7 @@ export const CategoriesListStyled = styled.aside`
     ul {
       display: flex;
       gap: 10px;
-      padding-inline: 10px;
+      padding-inline: 20px;
 
       @media (min-width: 46.75em) {
         flex-direction: column;
@@ -18,7 +18,7 @@ export const CategoriesListStyled = styled.aside`
       }
     }
 
-    span {
+    button {
       display: grid;
       place-items: center;
       padding-block: 6px;
@@ -27,12 +27,18 @@ export const CategoriesListStyled = styled.aside`
       padding-inline: 10px;
       border-radius: 2px;
       cursor: pointer;
+      background: none;
+      border: none;
+      font: inherit;
 
-      &:hover {
+      &:hover,
+      &.selected {
         background: ${theme.colors.accent};
         color: ${theme.colors.white};
       }
       @media (min-width: 46.75em) {
+        width: 100%;
+        text-align: left;
         display: block;
         padding-inline: 20px;
       }

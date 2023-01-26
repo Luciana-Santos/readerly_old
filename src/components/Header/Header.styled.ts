@@ -1,5 +1,6 @@
 import { FiMenu } from 'react-icons/fi';
 import { IoClose } from 'react-icons/io5';
+import { Link, NavLink } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 
 interface MenuStyledProps {
@@ -81,28 +82,6 @@ export const MenuStyled = styled.ul<MenuStyledProps>`
     margin-left: ${isMenuOpen ? '0px' : '-1000px'};
     transition: all 0.3s ease;
 
-    a {
-      display: block;
-      padding-inline: 20px;
-      padding-block: 8px;
-      font-size: 18px;
-      color: ${theme.colors.textColor};
-
-      &:hover {
-        background: ${theme.colors.accent};
-        color: ${theme.colors.white};
-
-        @media (min-width: 46.75em) {
-          background-color: transparent;
-        }
-      }
-
-      @media (min-width: 46.75em) {
-        padding-inline: 0;
-        color: #cecccf;
-      }
-    }
-
     @media (min-width: 46.75em) {
       background-color: transparent;
       flex-direction: row;
@@ -112,6 +91,34 @@ export const MenuStyled = styled.ul<MenuStyledProps>`
       padding-top: 0;
       margin-left: 0;
       bottom: 0;
+    }
+  `}
+`;
+
+export const PageLink = styled(NavLink)`
+  ${({ theme }) => css`
+    display: block;
+    padding-inline: 20px;
+    padding-block: 8px;
+    font-size: 18px;
+    color: ${theme.colors.textColor};
+
+    &:hover {
+      background: ${theme.colors.accent};
+      color: ${theme.colors.white};
+
+      @media (min-width: 46.75em) {
+        background-color: transparent;
+      }
+    }
+
+    &.active {
+      color: ${theme.colors.white};
+    }
+
+    @media (min-width: 46.75em) {
+      padding-inline: 0;
+      color: #cecccf;
     }
   `}
 `;

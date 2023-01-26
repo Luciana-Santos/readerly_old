@@ -12,6 +12,7 @@ import {
   MenuMobileIcon,
   MenuStyled,
   Nav,
+  PageLink,
 } from './Header.styled';
 
 const Header = () => {
@@ -40,9 +41,13 @@ const Header = () => {
             <MenuStyled isMenuOpen={isMenuOpen}>
               {menuContent.map((link) => (
                 <li key={link.id}>
-                  <Link to={link.url} onClick={handleMenuMobile}>
+                  <PageLink
+                    to={link.url}
+                    onClick={handleMenuMobile}
+                    className={({ isActive }) => (isActive ? 'activeLink' : '')}
+                  >
                     {link.name}
-                  </Link>
+                  </PageLink>
                 </li>
               ))}
             </MenuStyled>

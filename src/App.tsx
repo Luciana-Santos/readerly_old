@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
+import Loading from './components/Loading/Loading';
 import { GlobalStyles } from './GlobalStyled';
 import Categories from './pages/Categories/Categories';
 import Home from './pages/Home/Home';

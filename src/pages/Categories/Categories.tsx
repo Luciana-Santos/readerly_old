@@ -1,35 +1,31 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import CategoriesList from '../../components/Categories/CategoriesList';
 import MainSection from '../../components/Categories/MainSection';
-import { Readerly } from '../../types/types';
+import Loading from '../../components/Loading/Loading';
+import useFetch from '../../hooks/useFetch';
 import { CategoriesStyled } from './Categories.styled';
 
 const Categories = () => {
-  const [data, setData] = useState<Readerly[]>([]);
+  const { data, loading } = useFetch();
+  const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          'https://readerly-e2ca1-default-rtdb.firebaseio.com/data.json'
-        );
-        const dataDb = await response.json();
+  const filterItems = (category: string) => {
+    setSelectedCategory(category);
+  };
+  if (loading) return <Loading />;
+  if (data) {
+    return (
+      <CategoriesStyled>
+        <CategoriesList
+          selectedCategory={selectedCategory}
+          onHandleCategory={filterItems}
+          items={data}
+        />
 
-        setData(dataDb);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  return (
-    <CategoriesStyled>
-      <CategoriesList data={data} />
-
-      <MainSection data={data} />
-    </CategoriesStyled>
-  );
+        <MainSection selectedCategory={selectedCategory} />
+      </CategoriesStyled>
+    );
+  }
+  return null;
 };
 export default Categories;
