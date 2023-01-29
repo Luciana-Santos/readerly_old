@@ -1,5 +1,6 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import useFetch from '../../hooks/useFetch';
+import { TextContext } from '../../store/TextContext';
 import Loading from '../Loading/Loading';
 import { BulletIcon, MainSectionStyled } from './MainSection.styled';
 
@@ -8,7 +9,7 @@ interface MainSectionProps {
 }
 
 const MainSection = ({ selectedCategory }: MainSectionProps) => {
-  const { data, loading } = useFetch();
+  const { data, loading } = useContext(TextContext);
 
   const filteredItems = data?.filter((item) =>
     selectedCategory === 'all' ? data : item.tag.includes(selectedCategory)

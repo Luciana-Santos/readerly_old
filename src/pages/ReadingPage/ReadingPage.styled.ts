@@ -13,13 +13,24 @@ export const ReadingPageStyled = styled.div`
   `}
 `;
 
+export const TextInfo = styled.div`
+  text-align: center;
+  margin-bottom: 60px;
+`;
+
 export const ReadingPageTitle = styled.h2`
   ${({ theme }) => css`
     color: ${theme.colors.accent};
-    text-align: center;
-    font-size: clamp(24px, 5vw, 28px);
-    margin-bottom: 60px;
+    font-size: clamp(20px, 5vw, 28px);
+    font-family: 'Yeseva One', cursive;
+    line-height: 1.4;
+    margin-bottom: 10px;
   `}
+`;
+
+export const TextAuthor = styled.span`
+  color: ${({ theme }) => theme.colors.textColor};
+  opacity: 0.8;
 `;
 
 export const Subtitle = styled.h3`
@@ -33,13 +44,17 @@ export const Subtitle = styled.h3`
   `}
 `;
 
-export const TextContent = styled.p`
+export const TextContent = styled.div`
   ${({ theme }) => css`
     color: ${theme.colors.textColor};
     font-size: clamp(18px, 5vw, 20px);
     text-indent: 20px;
     max-width: 760px;
     margin-inline: auto;
+
+    p {
+      margin-bottom: 10px;
+    }
   `}
 `;
 

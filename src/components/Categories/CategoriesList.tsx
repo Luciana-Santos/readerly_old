@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Readerly } from '../../types/types';
 import { CategoriesListStyled } from './CategoriesList.styled';
 

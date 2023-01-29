@@ -1,12 +1,12 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import CategoriesList from '../../components/Categories/CategoriesList';
 import MainSection from '../../components/Categories/MainSection';
 import Loading from '../../components/Loading/Loading';
-import useFetch from '../../hooks/useFetch';
+import { TextContext } from '../../store/TextContext';
 import { CategoriesStyled } from './Categories.styled';
 
 const Categories = () => {
-  const { data, loading } = useFetch();
+  const { data, loading } = useContext(TextContext);
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
 
   const filterItems = (category: string) => {

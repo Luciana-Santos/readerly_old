@@ -1,10 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router';
-import { getReaderly } from '../../api/readerly-service';
 import Glossary from '../../components/Glossary/Glossary';
+import Loading from '../../components/Loading/Loading';
 import { Container } from '../../GlobalStyled';
-import useFetch from '../../hooks/useFetch';
-import { Readerly, GlossaryProps } from '../../types/types';
+import { TextContext } from '../../store/TextContext';
+import { Readerly } from '../../types/types';
 
 import {
   FinishButton,
@@ -13,43 +13,59 @@ import {
   ReadingPageStyled,
   ReadingPageTitle,
   Subtitle,
+  TextAuthor,
   TextContent,
+  TextInfo,
 } from './ReadingPage.styled';
 
 const ReadingPage = () => {
-  const { id } = useParams<{ id: string }>();
-  const { data, loading } = useFetch();
-
   const [glossary, setGlossary] = useState<string[]>([]);
+  const { id } = useParams<{ id: string }>();
+  const { data, loading } = useContext(TextContext);
 
   const textContent = data?.find((text: Readerly) => text.id === Number(id));
 
   useEffect(() => {
-    const textArray = textContent?.text;
+    const textArray = textContent?.text.join(' ');
+
     const shuffledArr = textArray?.split(' ').sort(() => 0.5 - Math.random());
-    const n = 5;
-    const words = shuffledArr?.slice(0, n);
-    const result = words?.filter((word) => textContent?.text.includes(word));
+    const numWords = 10;
+    const words = shuffledArr?.slice(0, numWords);
+    const result = words?.filter(
+      (word, index) => words.indexOf(word) === index
+    );
 
     setGlossary(result as string[]);
   }, [textContent]);
 
-  return (
-    <Container as="main">
-      <ReadingPageStyled>
-        <ReadingPageTitle>{textContent?.title}</ReadingPageTitle>
+  if (loading) return <Loading />;
 
-        <TextContent>{textContent?.text}</TextContent>
+  if (data) {
+    return (
+      <Container as="main">
+        <ReadingPageStyled>
+          <TextInfo>
+            <ReadingPageTitle>{textContent?.title}</ReadingPageTitle>
+            <TextAuthor> – {textContent?.author}</TextAuthor>
+          </TextInfo>
 
-        <Subtitle>Glossary</Subtitle>
-        <Glossary words={glossary} />
-      </ReadingPageStyled>
+          <TextContent>
+            {textContent?.text.map((paragraph, i) => {
+              return <p key={i}>{paragraph}</p>;
+            })}
+          </TextContent>
 
-      <FooterButtons>
-        <GoBackButton to="/categories">Back</GoBackButton>
-        <FinishButton>Done</FinishButton>
-      </FooterButtons>
-    </Container>
-  );
+          <Subtitle>Glossary</Subtitle>
+          <Glossary words={glossary} />
+        </ReadingPageStyled>
+
+        <FooterButtons>
+          <GoBackButton to="/categories">Back</GoBackButton>
+          <FinishButton>Done</FinishButton>
+        </FooterButtons>
+      </Container>
+    );
+  }
+  return null;
 };
 export default ReadingPage;
