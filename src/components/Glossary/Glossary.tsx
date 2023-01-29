@@ -3,26 +3,28 @@ import {
   AddWordButton,
   GlossaryWords,
   PlayAudioButton,
+  WordClass,
   WordDefinition,
-  WordPronunciation,
   WordSynonyms,
   WordTitle,
 } from './Glossary.styled';
 
 const Glossary = ({ words }: GlossaryProps) => {
+  const newWordsArr = words?.map((word) =>
+    word.replace(/[,:?!.]/g, '').toLowerCase()
+  );
+
   return (
     <GlossaryWords>
-      {words?.map((word) => {
+      {newWordsArr?.map((word) => {
         return (
-          <>
+          <div key={word}>
             <WordTitle>
               <AddWordButton />
               {word}
               <PlayAudioButton />
             </WordTitle>
-            <WordPronunciation>
-              /<span>hdfgr</span>/
-            </WordPronunciation>
+            <WordClass>noun</WordClass>
             <WordSynonyms>
               <span>Synonyms: </span>ability, talent
             </WordSynonyms>
@@ -30,7 +32,7 @@ const Glossary = ({ words }: GlossaryProps) => {
               Maecenas ut elit malesuada, dignissim felis sit amet, faucibus
               tortor.
             </WordDefinition>
-          </>
+          </div>
         );
       })}
     </GlossaryWords>

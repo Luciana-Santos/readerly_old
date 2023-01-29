@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components';
-import { MdBookmarkAdd } from 'react-icons/md';
 import { HiOutlinePlay } from 'react-icons/hi';
+import { MdBookmarkAdd } from 'react-icons/md';
+import styled, { css } from 'styled-components';
 
 export const GlossaryWords = styled.dl`
   max-width: 760px;
@@ -27,7 +27,7 @@ export const WordTitle = styled.dt`
   margin-top: 22px;
 `;
 
-export const WordPronunciation = styled.dd`
+export const WordClass = styled.dd`
   color: ${({ theme }) => theme.colors.textColor};
   opacity: 0.6;
 
