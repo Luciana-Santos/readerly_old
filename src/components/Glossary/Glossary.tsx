@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import { GlossaryContext } from '../../store/GlossaryContext';
 import { GlossaryProps } from '../../types/types';
 import {
   AddWordButton,
@@ -10,9 +12,12 @@ import {
 } from './Glossary.styled';
 
 const Glossary = ({ words }: GlossaryProps) => {
+  const { data, getWord } = useContext(GlossaryContext);
   const newWordsArr = words?.map((word) =>
     word.replace(/[,:?!.]/g, '').toLowerCase()
   );
+
+  console.log(data);
 
   return (
     <GlossaryWords>

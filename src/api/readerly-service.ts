@@ -1,7 +1,7 @@
-import { api } from './api';
 import { Readerly } from '../types/types';
+import { apiReaderly } from './api';
 
 export const getReaderly = async (): Promise<Readerly[]> => {
-  const { data } = await api.get<Readerly[]>('/data.json');
+  const { data } = await apiReaderly.get<Readerly[]>('/data.json');
   return data;
 };
